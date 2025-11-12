@@ -4,7 +4,7 @@
 
 
 .env
-
+.env.template
 mongo/
 postgres/
 node_modules/

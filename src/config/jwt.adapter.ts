@@ -23,11 +23,18 @@ export class JwtAdapter {
 
     static verifyToken(token: string): object | null {
         // Dummy implementation for token verification
-        try {
-            const payload = Buffer.from(token, 'base64').toString('utf-8');
-            return JSON.parse(payload);
-        } catch {
-            return null;
-        }
+
+        return new Promise((resolve) => {
+            jwt.verify(token, JWT_SEED, (err, decoded) => {
+
+                if (err) { resolve(null); }
+
+                resolve(decoded)
+
+            })
+        })
+
     }
+
+
 }
